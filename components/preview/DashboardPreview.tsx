@@ -3,6 +3,7 @@
 import { useEditorStore } from "@/store/useEditorStore";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import SalesChart from "./charts/SalesChart";
+import RecentOrders from "./tables/RecentOrders";
 
 export default function DashboardPreview() {
   const { config } = useEditorStore();
@@ -37,6 +38,17 @@ export default function DashboardPreview() {
             <CardTitle>Aylık Gelir Analizi</CardTitle>
           </CardHeader>
           <SalesChart />
+        </Card>
+      )}
+      
+      {config.showRecentOrders && (
+        <Card style={{ borderRadius: `${config.borderRadius}px` }}>
+          <CardHeader>
+            <CardTitle>Son Siparişler</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <RecentOrders />
+          </CardContent>
         </Card>
       )}
     </div>

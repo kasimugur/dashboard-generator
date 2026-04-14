@@ -16,7 +16,7 @@ export default function SalesChart() {
   const { config } = useEditorStore();
 
   return (
-    <div className="h-[300px] w-full pt-4">
+    <div className="h-75 w-full pt-4">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={data}>
           <defs>

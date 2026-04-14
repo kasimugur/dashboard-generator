@@ -30,6 +30,14 @@ export default function EditorSidebar() {
               onCheckedChange={(val) => setConfig({ showSalesChart: val })}
             />
           </div>
+          <div className="flex items-center justify-between">
+            <Label htmlFor="recent-orders">Son Siparişler Tablosu</Label>
+            <Switch 
+              id="recent-orders" 
+              checked={config.showRecentOrders}
+              onCheckedChange={(val) => setConfig({ showRecentOrders: val })}
+            />
+          </div>
         </div>
       </div>
 
@@ -66,6 +74,9 @@ export default function EditorSidebar() {
           ))}
         </div>
       </div>
+
+      
+      
 
     </div>
   );

@@ -1,0 +1,46 @@
+"use client";
+
+import { useEditorStore } from "@/store/useEditorStore";
+import { Switch } from "@/components/ui/switch";
+import { Slider } from "@/components/ui/slider";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+
+export default function EditorSidebar() {
+  const { config, setConfig } = useEditorStore();
+
+  return (
+    <div className="p-6 space-y-8">
+      <div>
+        <h2 className="text-lg font-semibold mb-4">Düzen Ayarları</h2>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <Label htmlFor="sales-chart">Satış Grafiği</Label>
+            <Switch 
+              id="sales-chart" 
+              checked={config.showSalesChart}
+              onCheckedChange={(val) => setConfig({ showSalesChart: val })}
+            />
+          </div>
+        </div>
+      </div>
+
+      <Separator />
+
+      <div>
+        <h2 className="text-lg font-semibold mb-4">Görünüm</h2>
+        <div className="space-y-6">
+          <div className="space-y-3">
+            <Label>Köşe Yumuşatma ({config.borderRadius}px)</Label>
+            <Slider 
+              value={[config.borderRadius]}
+              max={24}
+              step={2}
+              onValueChange={(val) => setConfig({ borderRadius: val[0] })}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -4,12 +4,12 @@ import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tool
 import { useEditorStore } from "@/store/useEditorStore";
 
 const data = [
-  { name: "Oca", total: 1200 },
-  { name: "Şub", total: 2100 },
-  { name: "Mar", total: 1800 },
-  { name: "Nis", total: 2400 },
-  { name: "May", total: 1700 },
-  { name: "Haz", total: 3100 },
+  { name: "jan", total: 1200 },
+  { name: "feb", total: 2100 },
+  { name: "mar", total: 1800 },
+  { name: "apr", total: 2400 },
+  { name: "may", total: 1700 },
+  { name: "jun", total: 3100 },
 ];
 
 export default function SalesChart() {

@@ -12,11 +12,11 @@ import { Badge } from "@/components/ui/badge";
 
 // Sahte (Mock) Veri Seti
 const orders = [
-  { id: "ORD-5021", customer: "Ahmet Yılmaz", amount: "$250.00", status: "Tamamlandı", date: "Bugün" },
-  { id: "ORD-5022", customer: "Ayşe Demir", amount: "$120.50", status: "Beklemede", date: "Bugün" },
-  { id: "ORD-5023", customer: "Mehmet Kaya", amount: "$850.00", status: "İptal", date: "Dün" },
-  { id: "ORD-5024", customer: "Elif Şahin", amount: "$45.00", status: "Tamamlandı", date: "Dün" },
-  { id: "ORD-5025", customer: "Can Yıldız", amount: "$320.00", status: "Tamamlandı", date: "12 Nis" },
+  { id: "ORD-5021", customer: "Ahmet Yılmaz", amount: "$250.00", status: "Completed", date: "Today" },
+  { id: "ORD-5022", customer: "Ayşe Demir", amount: "$120.50", status: "Pending", date: "Today" },
+  { id: "ORD-5023", customer: "Mehmet Kaya", amount: "$850.00", status: "Cancelled", date: "Yesterday" },
+  { id: "ORD-5024", customer: "Elif Şahin", amount: "$45.00", status: "Completed", date: "Yesterday" },
+  { id: "ORD-5025", customer: "Can Yıldız", amount: "$320.00", status: "Completed", date: "12th Apr" },
 ];
 
 export default function RecentOrders() {
@@ -25,11 +25,11 @@ export default function RecentOrders() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Sipariş</TableHead>
-            <TableHead>Müşteri</TableHead>
-            <TableHead>Durum</TableHead>
-            <TableHead>Tarih</TableHead>
-            <TableHead className="text-right">Tutar</TableHead>
+            <TableHead className="w-25">Order ID</TableHead>
+            <TableHead>Customer</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Date</TableHead>
+            <TableHead className="text-right">Amount</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -40,8 +40,8 @@ export default function RecentOrders() {
               <TableCell>
                 <Badge 
                   variant={
-                    order.status === "Tamamlandı" ? "default" :
-                    order.status === "İptal" ? "destructive" : "secondary"
+                    order.status === "Completed" ? "default" :
+                    order.status === "Cancelled" ? "destructive" : "secondary"
                   }
                 >
                   {order.status}

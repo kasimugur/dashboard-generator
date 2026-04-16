@@ -6,8 +6,7 @@ import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-
-import { BarChart3, ShoppingCart, Bitcoin } from "lucide-react"; // İkonlar için
+import { BarChart3, ShoppingCart, Bitcoin } from "lucide-react"; 
 import { Button } from "@/components/ui/button";
 import ExportModal from "./ExportModal";
 
@@ -16,21 +15,21 @@ export default function EditorSidebar() {
   const { theme, setTheme } = useTheme();
 
   const COLORS = [
-    { name: "Mavi", value: "#3b82f6" },
-    { name: "Mor", value: "#8b5cf6" },
-    { name: "Yeşil", value: "#10b981" },
-    { name: "Turuncu", value: "#f59e0b" },
-    { name: "Kırmızı", value: "#ef4444" },
+    { name: "blue", value: "#3b82f6" },
+    { name: "purple", value: "#8b5cf6" },
+    { name: "green", value: "#10b981" },
+    { name: "orange", value: "#f59e0b" },
+    { name: "red", value: "#ef4444" },
   ];
 
   return (
     <div className="p-6 space-y-8">
       <div>
-        <h2 className="text-lg font-semibold mb-4">Arayüz Modu</h2>
+        <h2 className="text-lg font-semibold mb-4">Interface Mode</h2>
         <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
           <div className="flex items-center gap-2">
             {theme === "dark" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-            <Label>Karanlık Tema</Label>
+            <Label>Dark Mode</Label>
           </div>
           <Switch 
             checked={theme === "dark"}
@@ -40,7 +39,7 @@ export default function EditorSidebar() {
       </div>
         <Separator  />
       <div>
-        <h2 className="text-lg font-semibold mb-4">Şablonlar</h2>
+        <h2 className="text-lg font-semibold mb-4">Templates</h2>
         <div className="grid grid-cols-3 gap-2">
           <Button
             variant={config.activeTemplate === 'ecommerce' ? "default" : "outline"}
@@ -48,7 +47,7 @@ export default function EditorSidebar() {
             onClick={() => useEditorStore.getState().applyTemplate('ecommerce')}
           >
             <ShoppingCart className="h-5 w-5 mb-2" />
-            <span className="text-xs">E-Ticaret</span>
+            <span className="text-xs">E-Commerce</span>
           </Button>
 
           <Button
@@ -57,7 +56,7 @@ export default function EditorSidebar() {
             onClick={() => useEditorStore.getState().applyTemplate('analytics')}
           >
             <BarChart3 className="h-5 w-5 mb-2" />
-            <span className="text-xs">Analitik</span>
+            <span className="text-xs">Data Analytics</span>
           </Button>
 
           <Button
@@ -66,17 +65,17 @@ export default function EditorSidebar() {
             onClick={() => useEditorStore.getState().applyTemplate('crypto')}
           >
             <Bitcoin className="h-5 w-5 mb-2" />
-            <span className="text-xs">Kripto</span>
+            <span className="text-xs">Crypto & Web3</span>
           </Button>
         </div>
       </div>
 
       <Separator className="my-6" />
       <div>
-        <h2 className="text-lg font-semibold mb-4">Düzen Ayarları</h2>
+        <h2 className="text-lg font-semibold mb-4">Components</h2>
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <Label htmlFor="sales-chart">Satış Grafiği</Label>
+            <Label htmlFor="sales-chart">Show Sales Chart</Label>
             <Switch
               id="sales-chart"
               checked={config.showSalesChart}
@@ -84,7 +83,7 @@ export default function EditorSidebar() {
             />
           </div>
           <div className="flex items-center justify-between">
-            <Label htmlFor="recent-orders">Son Siparişler Tablosu</Label>
+            <Label htmlFor="recent-orders">Show Recent Transactions</Label>
             <Switch
               id="recent-orders"
               checked={config.showRecentOrders}
@@ -97,10 +96,10 @@ export default function EditorSidebar() {
       <Separator />
 
       <div>
-        <h2 className="text-lg font-semibold mb-4">Görünüm</h2>
+        <h2 className="text-lg font-semibold mb-4">Design</h2>
         <div className="space-y-6">
           <div className="space-y-3">
-            <Label>Köşe Yumuşatma ({config.borderRadius}px)</Label>
+            <Label>Border Radius:({config.borderRadius}px)</Label>
             <Slider
               value={[config.borderRadius]}
               max={24}
@@ -114,7 +113,7 @@ export default function EditorSidebar() {
       <Separator />
 
       <div>
-        <h2 className="text-lg font-semibold mb-4">Tema Rengi</h2>
+        <h2 className="text-lg font-semibold mb-4">Theme Color</h2>
         <div className="flex flex-wrap gap-2">
           {COLORS.map((color) => (
             <button
@@ -133,7 +132,7 @@ export default function EditorSidebar() {
       <div className="space-y-4">
         <ExportModal />
         <p className="text-[10px] text-muted-foreground text-center">
-          Tasarladığın yapıyı direkt projene kopyalayabilirsin.
+          Export your dashboard configuration as JSON to easily share or reuse it later!
         </p>
       </div>
 

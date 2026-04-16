@@ -19,7 +19,7 @@ export default function DashboardGenerator() {
             </div>
 
             <div className="text-sm text-muted-foreground">
-              Değişiklikleri sağ panelden yönetin
+              Manage changes from the right-hand panel.
             </div>
           </div>
           <DashboardPreview />

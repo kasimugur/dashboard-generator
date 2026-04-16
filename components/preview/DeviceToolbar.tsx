@@ -8,7 +8,7 @@ export default function DeviceToolbar() {
   const { config, setConfig } = useEditorStore();
 
   const devices: { mode: ViewMode; icon: any; label: string }[] = [
-    { mode: 'desktop', icon: Monitor, label: "Masaüstü" },
+    { mode: 'desktop', icon: Monitor, label: "Desktop" },
     { mode: 'tablet', icon: Tablet, label: "Tablet" },
     { mode: 'mobile', icon: Smartphone, label: "Mobil" },
   ];

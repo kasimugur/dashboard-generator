@@ -4,15 +4,17 @@
 
 **NexusDash** is a high-performance **Next.js 16** application designed for developers and SaaS founders to prototype enterprise-grade dashboard interfaces in seconds. Beyond being a visual editor, it is a full-scale engineering tool featuring a **Zustand-powered** state engine, sector-specific template presets, and a dynamic code generator.
 
+[Live Demo](https://dashboard-generator-peach.vercel.app/) | [Report Bug](https://github.com/kasimugur/dashboard-generator/issues) | [Star the Repo ⭐](https://github.com/kasimugur/dashboard-generator)
+
 -----
 
 ## 📍 Table of Contents
-
 - [🚀 Features](#-features)
 - [🛠️ Tech Stack](#️-tech-stack)
 - [🎥 Demo & Screenshots](#-demo--screenshots)
 - [🏗️ Architecture & Performance](#️-architecture--performance)
 - [📦 Installation & Setup](#-installation--setup)
+- [🗺️ Roadmap](#️-roadmap)
 - [🔗 Contact](#-contact)
 
 -----
@@ -20,72 +22,83 @@
 ## 🚀 Features
 
 - **Dynamic Template Engine:** One-click presets for E-Commerce, Crypto, and Analytics sectors with tailored data sets and UI components.
-- **Live Code Generator (Export):** Instantly transform your custom design into clean, production-ready Next.js + Tailwind CSS code.
-- **Responsive Device Simulator:** Test your dashboard across Mobile (375px), Tablet (768px), and Desktop viewports with smooth transitions.
-- **Global State Management:** Real-time reactivity for theme colors, border-radius, and layout configurations powered by a high-performance Zustand store.
+- **Live Code Generator:** Instantly transform your custom design into clean, production-ready Next.js + Tailwind CSS code.
+- **Responsive Device Simulator:** Test your dashboard across Mobile, Tablet, and Desktop viewports with smooth transitions.
+- **Global State Management:** Real-time reactivity for theme colors and layout configurations powered by a high-performance Zustand store.
 - **Dark Mode Excellence:** Full support for dark/light themes via `next-themes` and Shadcn/UI integration.
 
-## 🛠️ Tech Stack
-
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript
-- **State Management:** Zustand (Zero-boilerplate centralized state)
-- **Styling:** Tailwind CSS
-- **UI Components:** Shadcn/UI & Radix UI
-- **Data Visualization:** Recharts (Dynamic SVG-based charting)
-- **Icons:** Lucide React
-
-## 🎥 Demo & Screenshots
-### Live Preview
-[View Live Demo](https://dashboard-generator-peach.vercel.app/)
+### ⏱️ The NexusDash Advantage
+| Feature    | ❌ Traditional Way           | ⚡ With NexusDash         |
+| :--------- | :-------------------------- | :----------------------- |
+| Setup      | Install libraries & configs | Ready to go              |
+| Layout     | Manual CSS & grid work      | Pick and toggle          |
+| Components | Build from scratch          | Instantly generated      |
+| Total Time | **2–6 Hours** | **< 60 Seconds** |
 
 ---
 
-### Application Screenshots
+## 🛠️ Tech Stack
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **State Management:** Zustand (Zero-boilerplate centralized state)
+- **Styling:** Tailwind CSS & Shadcn/UI
+- **Data Visualization:** Recharts (Dynamic SVG-based charting)
+- **Icons:** Lucide React
 
-| 🌑 Dark Mode | 📱 Mobile Simulation | 💻 Code Export Modal |
-|---|---|---|
-| ![Dark Mode](./public/darkmode.png) | ![Mobile](./public/mobile.png) | ![Export](./public/export.png) |
+---
 
 ## 🏗️ Architecture & Performance
 
 The application is engineered for scalability and developer efficiency:
 
-- **Atomic Component Structure:** By separating the `editor`, `preview`, and `ui` layers, the codebase remains modular and easy to extend with new dashboard widgets.
-- **State Optimization (Zustand):** To avoid the performance overhead of React Context API for frequent UI updates, a centralized Zustand store manages the configuration, ensuring 60fps responsiveness during customization.
-- **String Manipulation Engine:** The `lib/generateCode.ts` layer acts as a compiler, mapping the current JSON configuration into a clean JSX template literal for instant clipboard sharing.
-- **Viewport Transformation:** Uses CSS transitions combined with dynamic Tailwind `max-w` constraints to simulate device viewports without the need for heavy iframes.
+- **Atomic Component Structure:** Separated `editor`, `preview`, and `ui` layers for high modularity and ease of maintenance.
+- **State Optimization (Zustand):** Avoided React Context API for frequent UI updates to ensure 60fps responsiveness and prevent unnecessary re-renders during customization.
+- **String Manipulation Engine:** A custom compiler layer (`lib/generateCode.ts`) that maps the current JSON configuration into a clean JSX template literal for instant export.
+- **Viewport Transformation:** Uses CSS transitions combined with dynamic Tailwind `max-w` constraints to simulate device viewports accurately without heavy iframes.
+
+---
 
 ## 📦 Installation & Setup
 
 Follow these steps to run the project locally:
 
-1. **Clone the repository:**
-
 ```bash
-git clone [https://github.com/kasimugur/nexusdash.git](https://github.com/kasimugur/nexusdash.git)
-cd nexusdash
-```
+# Clone the repository
+git clone [https://github.com/kasimugur/dashboard-generator](https://github.com/kasimugur/dashboard-generator)
 
-2. **Install dependencies:**
+# Enter the directory
+cd dashboard-generator
 
-```bash
+# Install dependencies
 npm install
-```
 
-3. **Run the development server:**
-
-```bash
+# Run the development server
 npm run dev
-```
+````
 
 Open `http://localhost:3000` in your browser to start building.
 
----
+-----
+
+## 🗺️ Roadmap
+
+  - [ ] Add more chart types (Pie, Area, Radar)
+  - [ ] Drag-and-drop widget reordering
+  - [ ] Multi-page dashboard support
+  - [ ] Export to Vue/Svelte versions
+
+-----
+
+## 🎥 Screenshots
+
+| 🌑 Dark Mode |  💻 Code Export Modal |📱 Mobile Simulation |
+|---|---|---|
+|![Dark mode](./public/darkmode.png) | ![code](./public/code.png) || ![Mobile](./public/mobile.png) 
+
+-----
 
 # 🔗 Contact
 
 **Developer:** Kasım Uğur  
-**GitHub:** [https://github.com/kasimugur/](https://github.com/kasimugur/)  
-**LinkedIn:** [https://www.linkedin.com/in/kasimugur/](https://www.linkedin.com/in/kasimugur/)
-```
+**GitHub:** [kasimugur](https://github.com/kasimugur/)  
+**LinkedIn:** [kasimugur](https://www.linkedin.com/in/kasimugur/)

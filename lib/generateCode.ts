@@ -1,7 +1,6 @@
 import { TemplateType } from "@/store/useEditorStore";
 
 export const generateCode = (config: any) => {
-  // 1. Şablona göre doğru ikonları React'a import et
   const getIconImports = () => {
     switch (config.activeTemplate) {
       case 'crypto': return 'Bitcoin, Activity, DollarSign, ArrowUpRight';
@@ -10,7 +9,6 @@ export const generateCode = (config: any) => {
     }
   };
 
-  // 2. Şablona göre 3'lü Metrik Kartlarının kodunu dinamik oluştur
   const getMetricsCode = () => {
     const metrics = {
       crypto: [
@@ -48,7 +46,6 @@ export const generateCode = (config: any) => {
         </Card>`).join('');
   };
 
-  // 3. Ana Next.js / React Kodunu Döndür
   return `
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";

@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 
-// Sahte (Mock) Veri Seti
 const orders = [
   { id: "ORD-5021", customer: "Ahmet Yılmaz", amount: "$250.00", status: "Completed", date: "Today" },
   { id: "ORD-5022", customer: "Ayşe Demir", amount: "$120.50", status: "Pending", date: "Today" },

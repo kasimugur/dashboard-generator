@@ -54,7 +54,7 @@ export default function DashboardPreview() {
         <div className="p-6 space-y-6 overflow-y-auto max-h-[70vh]">
           {/* <div className="grid gap-4 transition-all duration-500" style={{ borderRadius: `${config.borderRadius}px` }} */}
           {/* 1. DİNAMİK METRİK KARTLARI */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 + gap-4">
+          <div className={`grid gap-4 ${config.viewMode === 'mobile' ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-3'}`}>
             {metrics.map((metric, i) => {
               const Icon = metric.icon;
               return (

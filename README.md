@@ -37,9 +37,9 @@
 
 ## 🎥 Demo & Screenshots
 ### Live Preview
-[View Live Demo](https://nexus-dash-generator.vercel.app/)
+[View Live Demo](https://dashboard-generator-peach.vercel.app/)
 
--0--
+---
 
 ### Application Screenshots
 

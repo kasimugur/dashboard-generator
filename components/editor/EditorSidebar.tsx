@@ -6,6 +6,9 @@ import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 
+import { BarChart3, ShoppingCart, Bitcoin } from "lucide-react"; // İkonlar için
+import { Button } from "@/components/ui/button";
+
 export default function EditorSidebar() {
   const { config, setConfig } = useEditorStore();
 
@@ -19,6 +22,39 @@ export default function EditorSidebar() {
 
   return (
     <div className="p-6 space-y-8">
+      <div>
+        <h2 className="text-lg font-semibold mb-4">Şablonlar</h2>
+        <div className="grid grid-cols-3 gap-2">
+          <Button 
+            variant={config.activeTemplate === 'ecommerce' ? "default" : "outline"} 
+            className="flex flex-col items-center h-auto py-4"
+            onClick={() => useEditorStore.getState().applyTemplate('ecommerce')}
+          >
+            <ShoppingCart className="h-5 w-5 mb-2" />
+            <span className="text-xs">E-Ticaret</span>
+          </Button>
+
+          <Button 
+            variant={config.activeTemplate === 'analytics' ? "default" : "outline"}
+            className="flex flex-col items-center h-auto py-4"
+            onClick={() => useEditorStore.getState().applyTemplate('analytics')}
+          >
+            <BarChart3 className="h-5 w-5 mb-2" />
+            <span className="text-xs">Analitik</span>
+          </Button>
+
+          <Button 
+            variant={config.activeTemplate === 'crypto' ? "default" : "outline"}
+            className="flex flex-col items-center h-auto py-4"
+            onClick={() => useEditorStore.getState().applyTemplate('crypto')}
+          >
+            <Bitcoin className="h-5 w-5 mb-2" />
+            <span className="text-xs">Kripto</span>
+          </Button>
+        </div>
+      </div>
+      
+      <Separator className="my-6" />
       <div>
         <h2 className="text-lg font-semibold mb-4">Düzen Ayarları</h2>
         <div className="space-y-4">

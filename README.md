@@ -93,7 +93,7 @@ Open `http://localhost:3000` in your browser to start building.
 
 | 🌑 Dark Mode |  💻 Code Export Modal |📱 Mobile Simulation |
 |---|---|---|
-|![Dark mode](./public/darkmode.png) | ![code](./public/code.png) || ![Mobile](./public/mobile.png) 
+|![Dark mode](./public/darkmode.png) | ![code](./public/code.png) | ![Mobile](./public/mobile.png) |
 
 -----
 

@@ -1,5 +1,6 @@
 "use client";
-
+import { useTheme } from "next-themes";
+import { Moon, Sun } from "lucide-react";
 import { useEditorStore } from "@/store/useEditorStore";
 import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
@@ -12,6 +13,7 @@ import ExportModal from "./ExportModal";
 
 export default function EditorSidebar() {
   const { config, setConfig } = useEditorStore();
+  const { theme, setTheme } = useTheme();
 
   const COLORS = [
     { name: "Mavi", value: "#3b82f6" },
@@ -23,6 +25,20 @@ export default function EditorSidebar() {
 
   return (
     <div className="p-6 space-y-8">
+      <div>
+        <h2 className="text-lg font-semibold mb-4">Arayüz Modu</h2>
+        <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
+          <div className="flex items-center gap-2">
+            {theme === "dark" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+            <Label>Karanlık Tema</Label>
+          </div>
+          <Switch 
+            checked={theme === "dark"}
+            onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+          />
+        </div>
+      </div>
+        <Separator  />
       <div>
         <h2 className="text-lg font-semibold mb-4">Şablonlar</h2>
         <div className="grid grid-cols-3 gap-2">

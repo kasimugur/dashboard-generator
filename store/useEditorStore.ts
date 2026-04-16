@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-
+export type ViewMode = 'mobile' | 'tablet' | 'desktop';
 export type TemplateType = 'ecommerce' | 'analytics' | 'crypto';
 interface DashboardConfig {
   activeTemplate: TemplateType;
@@ -9,6 +9,7 @@ interface DashboardConfig {
   showSalesChart: boolean;
   showRecentOrders: boolean;
   borderRadius: number;
+  viewMode: ViewMode;
 }
 
 
@@ -50,6 +51,7 @@ export const useEditorStore = create<EditorState>((set) => ({
     showSalesChart: true,
     showRecentOrders: true,
     borderRadius: 8,
+    viewMode: 'desktop',
   },
   setConfig: (newConfig) => 
     set((state) => ({

@@ -5,6 +5,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Activity, CreditCard, DollarSign, Users, Bitcoin, ArrowUpRight, MousePointerClick } from "lucide-react";
 import SalesChart from "./charts/SalesChart";
 import RecentOrders from "./tables/RecentOrders";
+import DeviceToolbar from "./DeviceToolbar";
 
 export default function DashboardPreview() {
   const { config } = useEditorStore();
@@ -34,64 +35,77 @@ export default function DashboardPreview() {
     }
   };
 
+  const getWidth = () => {
+    switch (config.viewMode) {
+      case "mobile": return "max-w-[375px]";
+      case "tablet": return "max-w-[768px]";
+      default: return "max-w-full";
+    }
+  };
   const metrics = getMetricsData();
 
   return (
-    <div 
-      className="grid gap-4 transition-all duration-500"
-      style={{ borderRadius: `${config.borderRadius}px` }}
-    >
-      {/* 1. DİNAMİK METRİK KARTLARI */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {metrics.map((metric, i) => {
-          const Icon = metric.icon;
-          return (
-            <Card key={i} style={{ borderRadius: `${config.borderRadius}px` }} className="transition-colors duration-300">
-              <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-                <CardTitle className="text-sm font-medium">{metric.title}</CardTitle>
-                <Icon className="h-4 w-4 text-muted-foreground" style={{ color: config.themeColor }} />
+    <div className="flex flex-col items-center w-full">
+      <DeviceToolbar />
+      <div
+        className={`${getWidth()} w-full bg-background shadow-2xl transition-all duration-500 border overflow-hidden`}
+        style={{ borderRadius: `${config.borderRadius}px` }}
+      >
+        <div className="p-6 space-y-6 overflow-y-auto max-h-[70vh]">
+          {/* <div className="grid gap-4 transition-all duration-500" style={{ borderRadius: `${config.borderRadius}px` }} */}
+          {/* 1. DİNAMİK METRİK KARTLARI */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 + gap-4">
+            {metrics.map((metric, i) => {
+              const Icon = metric.icon;
+              return (
+                <Card key={i} style={{ borderRadius: `${config.borderRadius}px` }} className="transition-colors duration-300">
+                  <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+                    <CardTitle className="text-sm font-medium">{metric.title}</CardTitle>
+                    <Icon className="h-4 w-4 text-muted-foreground" style={{ color: config.themeColor }} />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">{metric.value}</div>
+                    <p className="text-xs text-muted-foreground">
+                      <span className="text-emerald-500 font-medium flex items-center gap-1">
+                        <ArrowUpRight className="h-3 w-3" /> {metric.trend}
+                      </span>
+                      geçen aya göre
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+
+          {/* 2. DİNAMİK GRAFİK ALANI */}
+          {config.showSalesChart && (
+            <Card className="p-6" style={{ borderRadius: `${config.borderRadius}px` }}>
+              <CardHeader className="px-0 pt-0">
+                <CardTitle>
+                  {config.activeTemplate === "crypto" ? "Portföy Performansı" :
+                    config.activeTemplate === "analytics" ? "Trafik Analizi" : "Aylık Gelir Analizi"}
+                </CardTitle>
+              </CardHeader>
+              <SalesChart />
+            </Card>
+          )}
+
+          {/* 3. DİNAMİK TABLO ALANI */}
+          {/* Analitik şablonunda tabloyu gizliyoruz, diğerlerinde gösteriyoruz */}
+          {config.showRecentOrders && config.activeTemplate !== "analytics" && (
+            <Card style={{ borderRadius: `${config.borderRadius}px` }}>
+              <CardHeader>
+                <CardTitle>
+                  {config.activeTemplate === "crypto" ? "Son İşlemler (Transferler)" : "Son Siparişler"}
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{metric.value}</div>
-                <p className="text-xs text-muted-foreground">
-                  <span className="text-emerald-500 font-medium flex items-center gap-1">
-                    <ArrowUpRight className="h-3 w-3" /> {metric.trend}
-                  </span>
-                  geçen aya göre
-                </p>
+                <RecentOrders />
               </CardContent>
             </Card>
-          );
-        })}
+          )}
+        </div>
       </div>
-
-      {/* 2. DİNAMİK GRAFİK ALANI */}
-      {config.showSalesChart && (
-        <Card className="p-6" style={{ borderRadius: `${config.borderRadius}px` }}>
-          <CardHeader className="px-0 pt-0">
-            <CardTitle>
-              {config.activeTemplate === "crypto" ? "Portföy Performansı" : 
-               config.activeTemplate === "analytics" ? "Trafik Analizi" : "Aylık Gelir Analizi"}
-            </CardTitle>
-          </CardHeader>
-          <SalesChart />
-        </Card>
-      )}
-
-      {/* 3. DİNAMİK TABLO ALANI */}
-      {/* Analitik şablonunda tabloyu gizliyoruz, diğerlerinde gösteriyoruz */}
-      {config.showRecentOrders && config.activeTemplate !== "analytics"  && (
-        <Card style={{ borderRadius: `${config.borderRadius}px` }}>
-          <CardHeader>
-            <CardTitle>
-              {config.activeTemplate === "crypto" ? "Son İşlemler (Transferler)" : "Son Siparişler"}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <RecentOrders />
-          </CardContent>
-        </Card>
-      )}
     </div>
   );
 }

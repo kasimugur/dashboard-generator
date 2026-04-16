@@ -1,4 +1,3 @@
-import { TemplateType } from "@/store/useEditorStore";
 
 export const generateCode = (config: any) => {
   return `

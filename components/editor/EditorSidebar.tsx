@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator";
 
 import { BarChart3, ShoppingCart, Bitcoin } from "lucide-react"; // İkonlar için
 import { Button } from "@/components/ui/button";
+import ExportModal from "./ExportModal";
 
 export default function EditorSidebar() {
   const { config, setConfig } = useEditorStore();
@@ -25,8 +26,8 @@ export default function EditorSidebar() {
       <div>
         <h2 className="text-lg font-semibold mb-4">Şablonlar</h2>
         <div className="grid grid-cols-3 gap-2">
-          <Button 
-            variant={config.activeTemplate === 'ecommerce' ? "default" : "outline"} 
+          <Button
+            variant={config.activeTemplate === 'ecommerce' ? "default" : "outline"}
             className="flex flex-col items-center h-auto py-4"
             onClick={() => useEditorStore.getState().applyTemplate('ecommerce')}
           >
@@ -34,7 +35,7 @@ export default function EditorSidebar() {
             <span className="text-xs">E-Ticaret</span>
           </Button>
 
-          <Button 
+          <Button
             variant={config.activeTemplate === 'analytics' ? "default" : "outline"}
             className="flex flex-col items-center h-auto py-4"
             onClick={() => useEditorStore.getState().applyTemplate('analytics')}
@@ -43,7 +44,7 @@ export default function EditorSidebar() {
             <span className="text-xs">Analitik</span>
           </Button>
 
-          <Button 
+          <Button
             variant={config.activeTemplate === 'crypto' ? "default" : "outline"}
             className="flex flex-col items-center h-auto py-4"
             onClick={() => useEditorStore.getState().applyTemplate('crypto')}
@@ -53,7 +54,7 @@ export default function EditorSidebar() {
           </Button>
         </div>
       </div>
-      
+
       <Separator className="my-6" />
       <div>
         <h2 className="text-lg font-semibold mb-4">Düzen Ayarları</h2>
@@ -68,8 +69,8 @@ export default function EditorSidebar() {
           </div>
           <div className="flex items-center justify-between">
             <Label htmlFor="recent-orders">Son Siparişler Tablosu</Label>
-            <Switch 
-              id="recent-orders" 
+            <Switch
+              id="recent-orders"
               checked={config.showRecentOrders}
               onCheckedChange={(val) => setConfig({ showRecentOrders: val })}
             />
@@ -111,8 +112,15 @@ export default function EditorSidebar() {
         </div>
       </div>
 
-      
-      
+
+      <Separator className="my-6" />
+      <div className="space-y-4">
+        <ExportModal />
+        <p className="text-[10px] text-muted-foreground text-center">
+          Tasarladığın yapıyı direkt projene kopyalayabilirsin.
+        </p>
+      </div>
+
 
     </div>
   );
